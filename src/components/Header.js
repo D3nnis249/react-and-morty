@@ -13,7 +13,7 @@ const StyledHeader = styled.h1`
   color: white;
   align-items: center;
   border: 2px black solid;
-  margin-bottom: 1em;
+  margin-bottom: 1.1em;
   margin-top: 0;
 `;
 
