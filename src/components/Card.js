@@ -1,23 +1,22 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Card = () => {
   return (
-      <Wrapper>
-    <StyledCard>
-      <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"></img>
+    <Wrapper>
+      <StyledCard>
+        <img src="https://rickandmortyapi.com/api/character/avatar/2.jpeg"></img>
         <h2>Morty Smith</h2>
-    </StyledCard>
+      </StyledCard>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.main`
-display: flex;
-justify-content: center;
-
+  display: flex;
+  justify-content: center;
+  margin: 1.5em;
 `;
-
 
 const StyledCard = styled.div`
   display: flex;
@@ -26,8 +25,6 @@ const StyledCard = styled.div`
   align-items: center;
   width: auto;
   border: 2px solid black;
-  
 `;
-
 
 export default Card;
