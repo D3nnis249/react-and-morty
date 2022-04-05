@@ -23,7 +23,7 @@ const StyledNavigation = styled.ul`
   align-items: center;
   list-style: none;
   background-color: green;
-  height: 70px;
+  height: 75px;
   position: fixed;
   bottom: 0;
   width: 100%;

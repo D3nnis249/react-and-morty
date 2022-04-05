@@ -7,7 +7,7 @@ const Header = () => {
 
 const StyledHeader = styled.h1`
   display: flex;
-  height: 70px;
+  height: 75px;
   justify-content: center;
   background-color: green;
   color: white;
