@@ -1,52 +1,29 @@
 import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Card = () => {
-  const [characters, setCharacters] = useState([]);
-  const url = 'https://rickandmortyapi.com/api/character';
-
-  const loadCharacters = () => {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => setCharacters(data.results));
-  };
-
-  useEffect(() => {
-    loadCharacters();
-  }, []);
-
+const Card = ({ image, name }) => {
   return (
     <Wrapper>
-      <StyledCard>
-        {characters.map(character => (
-          <ListItem key={character.id}>
-            <img src={character.image}></img>
-            <h2>{character.name}</h2>
-          </ListItem>
-        ))}
-      </StyledCard>
+      <ListItem>
+        <img src={image} alt="Profile Img" />
+        <h2>{name}</h2>
+      </ListItem>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.main`
-  display: flex;
-  justify-content: center;
-`;
-
 const ListItem = styled.li`
-  text-align: center;
-  border: 2px solid black;
-  margin: 1em;
-`;
-
-const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: auto;
+  border: 2px solid black;
+  margin: 0.5em;
   list-style: none;
+`;
+
+const Wrapper = styled.ul`
+  display: flex;
+  justify-content: center;
 `;
 
 export default Card;
