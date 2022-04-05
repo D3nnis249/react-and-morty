@@ -1,20 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
 
 const Header = () => {
-  return <StyledHeader>React and Morty</StyledHeader>;
+  return (
+    <div className="header">
+      <h1> React and Morty </h1>
+    </div>
+  );
 };
-
-const StyledHeader = styled.h1`
-  display: flex;
-  height: 70px;
-  justify-content: center;
-  background-color: green;
-  color: white;
-  align-items: center;
-  border: 2px black solid;
-  margin-bottom: 1em;
-  margin-top: 0;
-`;
 
 export default Header;

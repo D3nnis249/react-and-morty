@@ -1,40 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
 
 const Navigation = () => {
   return (
-    <StyledNavigation>
+    <ul className="navigation">
       <li>
-        <StyledLink href="#">Homepage</StyledLink>
+        <a href="#">Homepage</a>
       </li>
       <li>
-        <StyledLink href="#">Favorites</StyledLink>
+        <a href="#">Favorites</a>
       </li>
       <li>
-        <StyledLink href="#">Random</StyledLink>
+        <a href="#">Ramdom</a>
       </li>
-    </StyledNavigation>
+    </ul>
   );
 };
-
-const StyledNavigation = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  background-color: green;
-  height: 70px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  border: 2px black solid;
-  margin-bottom: 0;
-`;
-
-const StyledLink = styled.a`
-  color: white;
-  text-decoration: none;
-  font-size: 1.5em;
-`;
 
 export default Navigation;
