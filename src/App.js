@@ -1,15 +1,14 @@
 import './App.css';
-import styled from "styled-components";
-import StyledHeader from './components/Header';
+import Header from './components/Header';
 import React from 'react';
 import Navigation from './components/Navigation';
-import StyledCard from './components/Card';
+import Card from './components/Card';
 
 function App() {
   return (
     <div>
-      <StyledHeader />
-      <StyledCard />
+      <Header />
+      <Card />
       <Navigation />
     </div>
   );

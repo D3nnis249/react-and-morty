@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Navigation = () => {
   return (
-    <StyledNavigation >
+    <StyledNavigation>
       <li>
         <StyledLink href="#">Homepage</StyledLink>
       </li>
@@ -17,8 +17,7 @@ const Navigation = () => {
   );
 };
 
-
-const StyledNavigation = styled.div`
+const StyledNavigation = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -26,18 +25,16 @@ const StyledNavigation = styled.div`
   background-color: green;
   height: 70px;
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   border: 2px black solid;
-
-  
-  
+  margin-bottom: 0;
 `;
 
 const StyledLink = styled.a`
-color: white;
-text-decoration: none;
-font-size: 1.5em;
-`
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+`;
 
 export default Navigation;
