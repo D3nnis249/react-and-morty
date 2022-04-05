@@ -6,7 +6,7 @@ import Card from './components/Card';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Header />
       <Card />
       <Navigation />
