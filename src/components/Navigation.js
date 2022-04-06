@@ -24,7 +24,7 @@ const Navigation = ({ setToSites }) => {
 const LinkStyling = styled(NavLink) `
 text-decoration: none;
 color: white;
-&:active{
+&.active{
   color: orange;
 }
 `
