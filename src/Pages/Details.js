@@ -3,20 +3,26 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 const Details = ({ characters }) => {
   const { id } = useParams();
-  const currentCharacter = characters.find(character => character.id == id);
+  const currentCharacter = characters.find(
+    character => character.id === Number(id)
+  );
 
   return (
     <Wrapper>
-      <Card
-        id={currentCharacter.id}
-        image={currentCharacter.image}
-        name={currentCharacter.name}
-        gender={currentCharacter.gender}
-        species={currentCharacter.species}
-        status={currentCharacter.status}
-        location={currentCharacter.location.name}
-        origin={currentCharacter.origin.name}
-      ></Card>
+      {currentCharacter ? (
+        <Card
+          id={currentCharacter.id}
+          image={currentCharacter.image}
+          name={currentCharacter.name}
+          gender={currentCharacter.gender}
+          species={currentCharacter.species}
+          status={currentCharacter.status}
+          location={currentCharacter.location.name}
+          origin={currentCharacter.origin.name}
+        ></Card>
+      ) : (
+        ''
+      )}
     </Wrapper>
   );
 };
