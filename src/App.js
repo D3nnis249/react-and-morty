@@ -2,7 +2,11 @@ import './App.css';
 import Header from './components/Header';
 import React, { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
-import Card from './components/Card';
+import { Routes, Route } from 'react-router-dom';
+import Home from './Pages/Home';
+import Favorites from './Pages/Favorites';
+import Random from './Pages/Random';
+import Details from './Pages/Details';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -18,18 +22,23 @@ function App() {
     loadCharacters();
   }, []);
   return (
-    <div>
+    <main>
       <Header />
-      {characters.map(character => (
-        <Card
-          key={character.id}
-          image={character.image}
-          name={character.name}
+      <Routes>
+        <Route path="/" element={<Home characters={characters} />} />
+        <Route
+          path="/Details/:id"
+          element={<Details characters={characters} />}
         />
-      ))}
+        <Route path="/random" element={<Random characters={characters} />} />
+        <Route
+          path="/favorites"
+          element={<Favorites characters={characters} />}
+        />
+      </Routes>
       <Navigation />
       );
-    </div>
+    </main>
   );
 }
 

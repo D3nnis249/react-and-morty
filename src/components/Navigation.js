@@ -1,21 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-const Navigation = () => {
+const Navigation = ({ setToSites }) => {
+  console.log(styled)
   return (
     <StyledNavigation>
-      <li>
-        <StyledLink href="#">Homepage</StyledLink>
-      </li>
-      <li>
-        <StyledLink href="#">Favorites</StyledLink>
-      </li>
-      <li>
-        <StyledLink href="#">Random</StyledLink>
-      </li>
+      <StyledLink>
+        <LinkStyling onClick={setToSites} to="/">
+          Home
+        </LinkStyling>
+      </StyledLink>
+      <StyledLink>
+        <LinkStyling to="/random">Random</LinkStyling>
+      </StyledLink>
+      <StyledLink>
+        <LinkStyling to="/favorites">Favorites</LinkStyling>
+      </StyledLink>
     </StyledNavigation>
   );
 };
+
+const LinkStyling = styled(NavLink) `
+text-decoration: none;
+color: white;
+&.active{
+  color: orange;
+}
+`
 
 const StyledNavigation = styled.ul`
   display: flex;
@@ -31,9 +43,7 @@ const StyledNavigation = styled.ul`
   margin-bottom: 0;
 `;
 
-const StyledLink = styled.a`
-  color: white;
-  text-decoration: none;
+const StyledLink = styled.li`
   font-size: 1.5em;
 `;
 
