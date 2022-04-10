@@ -3,23 +3,21 @@ import styled from 'styled-components';
 
 const Home = ({ characters }) => {
   return (
-    <main>
-      <Wrapper>
-        {characters.map(character => (
-          <Card
-            key={character.id}
-            image={character.image}
-            name={character.name}
-            gender={character.gender}
-            id={character.id}
-            species={character.species}
-            status={character.status}
-            location={character.location.name}
-            origin={character.origin.name}
-          />
-        ))}
-      </Wrapper>
-    </main>
+    <Wrapper>
+      {characters.map(character => (
+        <Card
+          key={character.id}
+          image={character.image}
+          name={character.name}
+          gender={character.gender}
+          id={character.id}
+          species={character.species}
+          status={character.status}
+          location={character.location.name}
+          origin={character.origin.name}
+        />
+      ))}
+    </Wrapper>
   );
 };
 

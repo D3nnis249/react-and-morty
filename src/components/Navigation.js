@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = ({ setToSites }) => {
-  console.log(styled)
+
   return (
     <StyledNavigation>
       <StyledLink>
@@ -21,13 +21,13 @@ const Navigation = ({ setToSites }) => {
   );
 };
 
-const LinkStyling = styled(NavLink) `
-text-decoration: none;
-color: white;
-&.active{
-  color: orange;
-}
-`
+const LinkStyling = styled(NavLink)`
+  text-decoration: none;
+  color: white;
+  &.active {
+    color: orange;
+  }
+`;
 
 const StyledNavigation = styled.ul`
   display: flex;
