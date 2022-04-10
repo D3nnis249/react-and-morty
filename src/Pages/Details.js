@@ -3,38 +3,30 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-const Details = ({ characters }) => {
+const Details = ({ characters, favoriteIDs, setFavoriteIDs }) => {
   const { id } = useParams();
   const currentCharacter = characters.find(
     character => character.id === Number(id)
   );
 
-  const [favoriteIDs, setFavoriteIDs] = useState(
-    JSON.parse(localStorage.getItem('favoriteIDs')) || []
-  );
-
   const toggleFavorites = ({}) => {
-    if (favoriteIDs.includes(id)) {
-      removeFavorite(id);
+    if (favoriteIDs.includes(currentCharacter.id)) {
+      removeFavorite(currentCharacter.id);
     } else {
-      addFavorite(id);
+      addFavorite(currentCharacter.id);
     }
   };
 
-  function addFavorite(id) {
-    setFavoriteIDs([...favoriteIDs, id]);
+  function addFavorite() {
+    setFavoriteIDs([...favoriteIDs, currentCharacter.id]);
   }
 
-  function removeFavorite(id) {
+  function removeFavorite() {
     const updatedFavoriteIDs = favoriteIDs.filter(
-      favoriteID => favoriteID !== id
+      favoriteID => favoriteID !== currentCharacter.id
     );
     setFavoriteIDs(updatedFavoriteIDs);
   }
-
-  useEffect(() => {
-    localStorage.setItem('favoriteIDs', JSON.stringify(favoriteIDs));
-  }, [favoriteIDs]);
 
   return (
     <Wrapper>
@@ -55,7 +47,7 @@ const Details = ({ characters }) => {
       )}
       <FavoriteButton
         onClick={toggleFavorites}
-        isFavorite={favoriteIDs.includes(id)}
+        isFavorite={favoriteIDs.includes(currentCharacter.id)}
       >
         Save as Favorites
       </FavoriteButton>
@@ -76,7 +68,7 @@ const FavoriteButton = styled.button`
   box-shadow: 1px 1px 5px 1px;
   border-radius: 20px;
   font-size: 15px;
-  background-color: ${props => (props.isFavorite ? 'green' : '')};
+  background-color: ${props => (props.isFavorite ? 'green' : [])};
 `;
 
 export default Details;

@@ -13,16 +13,16 @@ const Card = ({
   location,
 }) => {
   const [cardDetailsOn, setCardDetailsOn] = useState(true);
-  const [character, setCharacter] = useState({})
+  const [character, setCharacter] = useState({});
   const handleDetails = () => {
     setCardDetailsOn(changeState => !changeState);
   };
 
   useEffect(() => {
-    fetch('https://rickandmortyapi.com/api/character/' + id).then((response) =>
-      response.json().then((data) => setCharacter(data))
-    )
-  }, [])
+    fetch('https://rickandmortyapi.com/api/character/' + id).then(response =>
+      response.json().then(data => setCharacter(data))
+    );
+  }, []);
 
   return (
     <>
@@ -40,7 +40,7 @@ const Card = ({
       ) : (
         <ListItem>
           <img src={image} alt="Profile picture" />
-          
+
           <h2>{name}</h2>
           <p>Location: {location}</p>
           <p>Species: {species}</p>
@@ -84,7 +84,5 @@ const LinkStyling = styled(Link)`
     color: orange;
   }
 `;
-
-
 
 export default Card;
