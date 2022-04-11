@@ -7,7 +7,7 @@ const RandomPage = () => {
 
   const rdmChar = () => {
     const url = `https://rickandmortyapi.com/api/character/`;
-    const rdmId = Math.floor(Math.random() * 19) + 1;
+    const rdmId = Math.floor(Math.random() * 500) + 1;
     fetch(url + rdmId)
       .then(response => response.json())
       .then(data => setRandomCharacter(data));

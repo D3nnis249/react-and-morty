@@ -10,9 +10,9 @@ import Details from './Pages/Details';
 
 function App() {
   const [characters, setCharacters] = useState([]);
-  const [favoriteIDs, setFavoriteIDs] = useState(
-    JSON.parse(localStorage.getItem('favoriteIDs')) || []
-  );
+  const [favoriteIDs, setFavoriteIDs] = useState(() => {
+    return JSON.parse(localStorage.getItem('favoriteIDs'));
+  });
   const url = 'https://rickandmortyapi.com/api/character/';
 
   const loadCharacters = () => {
@@ -20,15 +20,6 @@ function App() {
       .then(response => response.json())
       .then(data => setCharacters(data.results));
   };
-
-  function addFavorite(id) {
-    setFavoriteIDs([...favoriteIDs, id]);
-  }
-
-  function removeFavorite(id) {
-    const updatedFavoriteIDs = favoriteIDs.filter(favID => favID !== id);
-    setFavoriteIDs(updatedFavoriteIDs);
-  }
 
   useEffect(() => {
     localStorage.setItem('favoriteIDs', JSON.stringify(favoriteIDs));
@@ -50,8 +41,6 @@ function App() {
               characters={characters}
               setFavoriteIDs={setFavoriteIDs}
               favoriteIDs={favoriteIDs}
-              removeFavorite={removeFavorite}
-              addFavorite={addFavorite}
             />
           }
         />
@@ -59,11 +48,7 @@ function App() {
         <Route
           path="/favorites"
           element={
-            <Favorites
-              characters={characters}
-              favoriteIDs={favoriteIDs}
-              removeFavorite={removeFavorite}
-            />
+            <Favorites characters={characters} favoriteIDs={favoriteIDs} />
           }
         />
       </Routes>

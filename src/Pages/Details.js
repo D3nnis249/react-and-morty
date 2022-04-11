@@ -1,5 +1,5 @@
 import Card from './../components/Card';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -47,7 +47,7 @@ const Details = ({ characters, favoriteIDs, setFavoriteIDs }) => {
       )}
       <FavoriteButton
         onClick={toggleFavorites}
-        isFavorite={favoriteIDs.includes(currentCharacter.id)}
+        isFavorite={favoriteIDs.includes(Number(id))}
       >
         Save as Favorites
       </FavoriteButton>
@@ -69,6 +69,7 @@ const FavoriteButton = styled.button`
   border-radius: 20px;
   font-size: 15px;
   background-color: ${props => (props.isFavorite ? 'green' : [])};
+  //background-color: ${props => props.isFavorite && 'green'};
 `;
 
 export default Details;
