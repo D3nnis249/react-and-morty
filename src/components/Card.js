@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
-import { Button } from './Button';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Card = ({
@@ -14,16 +13,24 @@ const Card = ({
   location,
 }) => {
   const [cardDetailsOn, setCardDetailsOn] = useState(true);
+  const [character, setCharacter] = useState({});
   const handleDetails = () => {
     setCardDetailsOn(changeState => !changeState);
   };
+
+  useEffect(() => {
+    fetch('https://rickandmortyapi.com/api/character/' + id).then(response =>
+      response.json().then(data => setCharacter(data))
+    );
+  }, []);
 
   return (
     <>
       {cardDetailsOn ? (
         <ListItem>
-          <img src={image} alt="Profile picture"></img>
+          <img src={character.image} alt="Profile picture"></img>
           <h2>{name}</h2>
+
           <AllButtons>
             <LinkStyling onClick={handleDetails} to={`/Details/${id}`}>
               Show more
@@ -33,6 +40,7 @@ const Card = ({
       ) : (
         <ListItem>
           <img src={image} alt="Profile picture" />
+
           <h2>{name}</h2>
           <p>Location: {location}</p>
           <p>Species: {species}</p>
@@ -76,7 +84,5 @@ const LinkStyling = styled(Link)`
     color: orange;
   }
 `;
-
-//<FavoriteButton>Save as favorite</FavoriteButton>
 
 export default Card;

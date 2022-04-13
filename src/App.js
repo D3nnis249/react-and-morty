@@ -10,6 +10,9 @@ import Details from './Pages/Details';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [favoriteIDs, setFavoriteIDs] = useState(() => {
+    return JSON.parse(localStorage.getItem('favoriteIDs'));
+  });
   const url = 'https://rickandmortyapi.com/api/character/';
 
   const loadCharacters = () => {
@@ -19,8 +22,13 @@ function App() {
   };
 
   useEffect(() => {
+    localStorage.setItem('favoriteIDs', JSON.stringify(favoriteIDs));
+  }, [favoriteIDs]);
+
+  useEffect(() => {
     loadCharacters();
   }, []);
+
   return (
     <main>
       <Header />
@@ -28,16 +36,23 @@ function App() {
         <Route path="/" element={<Home characters={characters} />} />
         <Route
           path="/Details/:id"
-          element={<Details characters={characters} />}
+          element={
+            <Details
+              characters={characters}
+              setFavoriteIDs={setFavoriteIDs}
+              favoriteIDs={favoriteIDs}
+            />
+          }
         />
         <Route path="/random" element={<Random characters={characters} />} />
         <Route
           path="/favorites"
-          element={<Favorites characters={characters} />}
+          element={
+            <Favorites characters={characters} favoriteIDs={favoriteIDs} />
+          }
         />
       </Routes>
       <Navigation />
-      );
     </main>
   );
 }
