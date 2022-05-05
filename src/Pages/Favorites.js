@@ -4,7 +4,7 @@ import Card from '../components/Card';
 
 const Favorites = ({ characters, favoriteIDs }) => {
   return (
-    <Wrapper role="list">
+    <Wrapper>
       {characters
         .filter(character => favoriteIDs.includes(character.id))
         .map(character => (

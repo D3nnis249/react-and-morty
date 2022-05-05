@@ -11,7 +11,7 @@ import Details from './Pages/Details';
 function App() {
   const [characters, setCharacters] = useState([]);
   const [favoriteIDs, setFavoriteIDs] = useState(() => {
-    return JSON.parse(localStorage.getItem('favoriteIDs'));
+    return JSON.parse(localStorage.getItem('favoriteIDs')) || [];
   });
   const url = 'https://rickandmortyapi.com/api/character/';
 
